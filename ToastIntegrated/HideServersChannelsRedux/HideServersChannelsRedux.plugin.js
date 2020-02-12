@@ -86,13 +86,15 @@ var HideServersChannelsRedux = (() => {
 			}
 
 			render() {
+			  const [guildsWrapper] = guilds.wrapper.split(' ');
+			  const element = document.querySelector(`.${guildsWrapper}`);
 				return DiscordModules.React.createElement(TooltipWrapper, {
 					color: TooltipWrapper.Colors.BLACK,
 					position: TooltipWrapper.Positions.BOTTOM,
 					text: 'Toggle Servers',
 					children: (props) => DiscordModules.React.createElement('div', Object.assign({
 						tabindex: 0,
-						className: `${icons.iconWrapper} ${icons.clickable}`,
+						className: !DOMTools.hasClass(element, '_closed') ? `${icons.iconWrapper} ${icons.clickable} ${icons.selected}` : `${icons.iconWrapper} ${icons.clickable}`,
 						role: 'button'
 					}, props), 
 						DiscordModules.React.createElement('svg', {
@@ -131,13 +133,14 @@ var HideServersChannelsRedux = (() => {
 			}
 
 			render() {
+			  const element = document.querySelector(`.${channelBase.sidebar.split(' ')[0]}`);
 				return DiscordModules.React.createElement(TooltipWrapper, {
 					color: TooltipWrapper.Colors.BLACK,
 					position: TooltipWrapper.Positions.BOTTOM,
 					text: 'Toggle Channels',
 					children: (props) => DiscordModules.React.createElement('div', Object.assign({
 						tabindex: 0,
-						className: `${icons.iconWrapper} ${icons.clickable}`,
+						className: !DOMTools.hasClass(element, '_closed') ? `${icons.iconWrapper} ${icons.clickable} ${icons.selected}` : `${icons.iconWrapper} ${icons.clickable}`,
 						role: 'button'
 					}, props),
 						DiscordModules.React.createElement('svg', {
